@@ -4,10 +4,21 @@ const router = express.Router();
 const { 
     createContactController,
     updateContactController,
+    deleteContactController,
     listContactsController
   } = require("../controllers/contactController");
 
 const verifyToken = require("../middlewares/authMiddleware");
+
+router.post('/create', verifyToken, createContactController);
+router.patch('/update/:id', verifyToken, updateContactController);
+router.delete('/delete/:id', verifyToken, deleteContactController);
+router.get('/list', verifyToken, listContactsController);
+
+
+module.exports = router;
+
+//swagger
 
 /**
  * @openapi
@@ -57,7 +68,7 @@ const verifyToken = require("../middlewares/authMiddleware");
  *         description: Erreur serveur
  */
 
-router.post('/create', verifyToken, createContactController);
+
 
 /**
  * @openapi
@@ -116,7 +127,7 @@ router.post('/create', verifyToken, createContactController);
  *         description: Erreur serveur
  */
 
-router.patch('/update/:id', verifyToken, updateContactController);
+
 
 /**
  * @openapi
@@ -155,7 +166,3 @@ router.patch('/update/:id', verifyToken, updateContactController);
  *       bearerFormat: JWT
  */
 
-router.get('/list', verifyToken, listContactsController);
-
-
-module.exports = router;

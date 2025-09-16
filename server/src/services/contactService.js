@@ -12,6 +12,11 @@ async function updateContact(contactId, updates) {
     return updatedContact;
 }
 
+async function deleteContact(contactId) {
+    const deletedContact = await Contact.findByIdAndDelete(contactId);
+    return deletedContact;
+}
+
 
 async function getAllContacts() {
     return Contact.find();
@@ -20,5 +25,6 @@ async function getAllContacts() {
 module.exports = {
     createContact,
     updateContact,
+    deleteContact,
     getAllContacts,
   };

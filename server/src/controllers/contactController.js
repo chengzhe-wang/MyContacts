@@ -27,6 +27,23 @@ async function updateContactController(req, res) {
     }
 }
 
+async function deleteContactController(req, res) {
+
+    const contactId = req.params.id;
+
+    try {
+        const deletedContact = await contactService.deleteContact(contactId);
+
+        if (!deletedContact) {
+            return res.status(404).json({ error: 'Contact non trouvé' });
+        }
+        res.json({ message: 'Contact supprimé'});
+    } catch (err) {
+        res.status(500).json({ error: 'Erreur serveur' });
+    }
+}
+
+
 async function listContactsController(_req, res) {
     const users = await contactService.getAllContacts();
     res.json(users);
@@ -35,5 +52,6 @@ async function listContactsController(_req, res) {
 module.exports = {
     createContactController,
     updateContactController,
+    deleteContactController,
     listContactsController,
 };
