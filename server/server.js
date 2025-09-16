@@ -1,16 +1,21 @@
 //Server
 const express = require("express");
 const bodyParser = require("body-parser");
-const userRoutes = require("./src/routes/userRoutes");
+
+//swagger
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+
+//routes
+const userRoutes = require("./src/routes/userRoutes");
+const protectedRoutes = require("./src/routes/protectedRoutes");
 
 
 const app = express();
 app.use(bodyParser.json());
 
-
-app.use("/", userRoutes);
+app.use("/auth", userRoutes);
+app.use("/protected", protectedRoutes);
 
 app.listen(3000, () => 
   console.log("Server running on http://localhost:3000")
@@ -30,6 +35,15 @@ const swaggerOptions = {
         url: "http://localhost:3000",
       },
     ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   apis: ["./src/routes/*.js"],
 };
