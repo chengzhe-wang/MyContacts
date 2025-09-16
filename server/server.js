@@ -8,14 +8,14 @@ const swaggerJsdoc = require("swagger-jsdoc");
 
 //routes
 const userRoutes = require("./src/routes/userRoutes");
-const protectedRoutes = require("./src/routes/protectedRoutes");
+const contactRoutes = require("./src/routes/contactRoutes");
 
 
 const app = express();
 app.use(bodyParser.json());
 
 app.use("/auth", userRoutes);
-app.use("/protected", protectedRoutes);
+app.use("/contacts", contactRoutes);
 
 app.listen(3000, () => 
   console.log("Server running on http://localhost:3000")
