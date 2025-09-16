@@ -127,6 +127,46 @@ module.exports = router;
  *         description: Erreur serveur
  */
 
+/**
+ * @openapi
+ * /contacts/delete/{id}:
+ *   delete:
+ *     summary: Supprime un contact
+ *     description: Accessible uniquement avec un token JWT valide. Permet de supprimer un contact existant.
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID du contact à supprimer
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Contact supprimé avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Contact supprimé"
+ *                 contact:
+ *                   type: object
+ *                   example:
+ *                     _id: "68c952fbb6f19f924eab1572"
+ *                     firstName: "Alice"
+ *                     lastName: "Doe"
+ *                     phone: "+33 6 12 34 56 78"
+ *       401:
+ *         description: Token manquant ou invalide
+ *       404:
+ *         description: Contact non trouvé
+ *       500:
+ *         description: Erreur serveur
+ */
 
 
 /**

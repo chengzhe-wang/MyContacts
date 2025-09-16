@@ -9,6 +9,13 @@ const {
 
 const router = express.Router();
 
+router.post("/register", registerController);
+router.post("/login", loginController);
+router.get("/get", listUsersController);
+
+module.exports = router;
+
+//swagger
 
 /**
  * @openapi
@@ -37,7 +44,7 @@ const router = express.Router();
  *       500:
  *        description: Erreur serveur
  */
-router.post("/register", registerController);
+
 
 
 /**
@@ -78,7 +85,7 @@ router.post("/register", registerController);
  *       500:
  *         description: Erreur serveur
  */
-router.post("/login", loginController);
+
 
 /**
  * @openapi
@@ -89,8 +96,4 @@ router.post("/login", loginController);
  *       200:
  *         description: Retourne la liste des users
  */
-router.get("/get", listUsersController);
 
-
-
-module.exports = router;
