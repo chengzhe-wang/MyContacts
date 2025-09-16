@@ -3,7 +3,7 @@ require('dotenv').config();
 
 function verifyToken(req, res, next) {
   const authHeader = req.header('Authorization');
-  if (!authHeader) return res.status(401).json({ error: 'Access denied' });
+  if (!authHeader) return res.status(401).json({ error: 'Accès refusé' });
 
   let token;
   if (authHeader.startsWith('Bearer ')) {
@@ -17,7 +17,7 @@ function verifyToken(req, res, next) {
     req.userId = decoded.userId;
     next();
   } catch (error) {
-    res.status(401).json({ error: 'Invalid token' });
+    res.status(401).json({ error: 'Token invalide' });
   }
 }
 
