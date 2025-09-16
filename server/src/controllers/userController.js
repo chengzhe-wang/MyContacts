@@ -15,17 +15,8 @@ async function createUserController(req, res) {
     res.json(users);
   }
   
-  async function listDatabasesController(req, res) {
-    try {
-      const databases = await userService.listDatabases();
-      res.json(databases);
-    } catch (err) {
-      res.status(500).json({ error: "Erreur serveur" });
-    }
-  }
   
   module.exports = {
     createUserController,
-    listDatabasesController,
     listUsersController,
   };

@@ -2,7 +2,7 @@
 const express = require("express");
 const { 
   createUserController, 
-  listDatabasesController 
+  listUsersController 
 } = require("../controllers/userController");
 
 
@@ -33,14 +33,14 @@ router.post("/users/create", createUserController);
 
 /**
  * @openapi
- * /users/databases:
+ * /users/get:
  *   get:
- *     summary: Liste les bases de données MongoDB
+ *     summary: Liste les Users
  *     responses:
  *       200:
- *         description: Retourne la liste des bases
+ *         description: Retourne la liste des users
  */
-router.get("/users/databases", listDatabasesController);
+router.get("/users/get", listUsersController);
 
 
 module.exports = router;
