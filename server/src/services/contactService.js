@@ -1,8 +1,8 @@
 const Contact = require('../models/contactModel');
 const jwt = require('jsonwebtoken');
 
-async function createContact(firstName, lastName, phone) {
-    const contact = new Contact({ firstName, lastName, phone });
+async function createContact(firstName, lastName, phone, userId) {
+    const contact = new Contact({ firstName, lastName, phone, userId });
     await contact.save();
     return contact;
 }
@@ -27,4 +27,4 @@ module.exports = {
     updateContact,
     deleteContact,
     getAllContacts,
-  };
+};

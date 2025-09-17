@@ -2,39 +2,39 @@ import { useState } from "react";
 import { loginUser } from "../api/auth";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
-  const handleLogin = async () => {
-    try {
-      const res = await loginUser(email, password);
-      const token = res.data.token;
-      localStorage.setItem("token", token);
-      setMessage("Connecté !");
-    } catch (err) {
-      setMessage(err.response?.data?.error || "Erreur");
-    }
-  };
+    const handleLogin = async () => {
+        try {
+            const res = await loginUser(email, password);
+            const token = res.data.token;
+            localStorage.setItem("token", token);
+            setMessage("Connecté !");
+        } catch (err) {
+            setMessage(err.response?.data?.error || "Erreur");
+        }
+    };
 
-  return (
+    return (
     <div>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Mot de passe"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button onClick={handleLogin}>Se connecter</button>
+        <button onClick={handleLogin}>Se connecter</button>
 
-      <p>{message}</p>
+        <p>{message}</p>
     </div>
-  );
+    );
 }
