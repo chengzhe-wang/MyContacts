@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { loginUser } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -12,6 +14,7 @@ export default function Login() {
             const token = res.data.token;
             localStorage.setItem("token", token);
             setMessage("Connecté !");
+            navigate("/contacts");
         } catch (err) {
             setMessage(err.response?.data?.error || "Erreur");
         }

@@ -3,6 +3,8 @@ const Contact = require('../models/contactModel');
 
 async function createContactController(req, res) {
     try {
+        console.log("Body reçu:", req.body);
+        console.log("UserId:", req.userId);
         const { firstname, lastname, phone } = req.body;
         const userId = req.userId;
         const contact = await contactService.createContact(firstname, lastname, phone, userId);
