@@ -4,6 +4,23 @@ Application web pour gérer vos contacts, construite avec **Node.js**, **Express
 
 ---
 
+## Liens
+
+Frontend :
+https://mycontacts-chengzhe.netlify.app/
+
+Backend/Swagger :
+https://mycontacts-qzj8.onrender.com/api-docs/
+
+### Connexion
+
+Identifiants de test :
+
+```
+test@efrei.net | 123
+test@gmail.com | password123
+```
+
 ## Prérequis
 
 - Node.js (18+)
