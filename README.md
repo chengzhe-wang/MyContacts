@@ -12,6 +12,8 @@ https://mycontacts-chengzhe.netlify.app/
 Backend/Swagger :
 https://mycontacts-qzj8.onrender.com/api-docs/
 
+Veillez à bien lancer le lien backend en amont pour lancer le serveur, sinon le site risque de ne pas marcher.
+
 ### Connexion
 
 Identifiants de test :
