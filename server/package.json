@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node src/app.js",
-    "test": "jest --detectOpenHandles --forceExit"
+    "test": "jest --detectOpenHandles --forceExit --coverage"
   },
   "devDependencies": {
     "jest": "^30.1.3",

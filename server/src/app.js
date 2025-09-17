@@ -18,6 +18,7 @@ const app = express();
 app.use(cors);
 app.use(bodyParser.json());
 
+
 if (process.env.NODE_ENV !== "test") {
     server.startMongo().catch(console.error);
     const PORT = process.env.PORT || 3001;
@@ -39,7 +40,10 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: "http://localhost:3001",
+                url: "https://mycontacts-qzj8.onrender.com", description: "Render Server"
+            },
+            {
+                url: "http://localhost:3001", description: "Local Server"
             },
         ],
         components: {

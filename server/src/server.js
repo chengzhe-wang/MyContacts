@@ -14,7 +14,7 @@ const client = new MongoClient(uri, {
     }
 });
 
-let db;
+//let db;
 
 // async function startMongo() {
 //     if (!mongoose.connection.readyState) {
@@ -44,6 +44,7 @@ let db;
 //     }
 // }
 
+// réajustement du code pour les tests
 async function startMongo() {
     if (!mongoose.connection.readyState) {
         try {
