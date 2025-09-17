@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const server = require("./server");
+const cors = require("./config/cors");
 
 //swagger
 const swaggerUi = require("swagger-ui-express");
@@ -12,6 +13,7 @@ const contactRoutes = require("./routes/contactRoutes");
 
 
 const app = express();
+app.use(cors);
 app.use(bodyParser.json());
 
 server.startMongo().catch(console.error);
@@ -19,8 +21,8 @@ server.startMongo().catch(console.error);
 app.use("/auth", userRoutes);
 app.use("/contacts", contactRoutes);
 
-app.listen(3000, () => 
-  console.log("Server running on http://localhost:3000")
+app.listen(3001, () => 
+  console.log("Server running on http://localhost:3001")
 );
 
 
@@ -34,7 +36,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "http://localhost:3001",
       },
     ],
     components: {

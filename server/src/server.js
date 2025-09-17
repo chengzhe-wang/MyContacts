@@ -19,6 +19,7 @@ let db;
 async function startMongo() {
     
     try {
+        console.log("Connexion à MongoDB...");
         await client.connect();
 
         mongoose.connect(process.env.MONGO_URI)
