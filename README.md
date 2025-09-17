@@ -92,7 +92,7 @@ Les deux serveurs marchent si vous êtes en local.
 
 > ⚠️ Un token JWT est nécessaire pour accéder aux routes contacts.  
 
-Pour générer le token :
+Pour générer le JWT token à mettre dans .env :
 
 ```bash
 node
