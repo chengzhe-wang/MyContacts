@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { loginUser } from "../api/auth";
+import { registerUser } from "../api/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      const res = await loginUser(email, password);
-      const token = res.data.token;
-      localStorage.setItem("token", token);
-      setMessage("Connecté !");
+      await registerUser(email, password);
+      setMessage("Inscription réussie !");
     } catch (err) {
       setMessage(err.response?.data?.error || "Erreur");
     }
   };
+
 
   return (
     <div>
@@ -32,7 +31,7 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button onClick={handleLogin}>Se connecter</button>
+      <button onClick={handleRegister}>S'inscrire</button>
 
       <p>{message}</p>
     </div>
