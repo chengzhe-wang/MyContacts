@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const server = require("./server");
 const cors = require("./config/cors");
+require('dotenv').config();
 
 //swagger
 const swaggerUi = require("swagger-ui-express");
@@ -13,18 +14,20 @@ const contactRoutes = require("./routes/contactRoutes");
 
 
 const app = express();
+
 app.use(cors);
 app.use(bodyParser.json());
 
-server.startMongo().catch(console.error);
+if (process.env.NODE_ENV !== "test") {
+    server.startMongo().catch(console.error);
+    const PORT = process.env.PORT || 3001;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 app.use("/auth", userRoutes);
 app.use("/contacts", contactRoutes);
 
-app.listen(3001, () => 
-    console.log("Server running on http://localhost:3001")
-);
-
+module.exports = app;
 
 const swaggerOptions = {
     definition: {

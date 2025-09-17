@@ -4,7 +4,7 @@ async function registerController(req, res) {
     try {
         const { email, password } = req.body;
         const user = await userService.registerUser(email, password);
-        res.status(201).json({ message: "User créé", user: {id: user._id, email: user.email, createdAt : user.createdAt} });
+        res.status(201).json({ message: "User créé", userId: user._id });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

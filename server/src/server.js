@@ -16,31 +16,45 @@ const client = new MongoClient(uri, {
 
 let db;
 
+// async function startMongo() {
+//     if (!mongoose.connection.readyState) {
+//         try {
+//             console.log("Connexion à MongoDB...");
+//             //await client.connect();
+
+//             mongoose.connect(process.env.MONGO_URI)
+//             .then(() => console.log('Mongoose connecté'))
+//             .catch(err => console.error('Erreur MongoDB :', err));
+
+//             // sample issu du site mongodb
+//             // Send a ping to confirm a successful connection
+//             await client.db("admin").command({ ping: 1 });
+//             console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+//             db = client.db("myContacts");
+//             return db;
+        
+//         } catch (e) {
+//             console.error(e);
+//         }
+
+//         // finally {
+//         //     await client.close();
+//         // }
+//     }
+// }
+
 async function startMongo() {
-    
-    try {
-        console.log("Connexion à MongoDB...");
-        await client.connect();
-
-        mongoose.connect(process.env.MONGO_URI)
-        .then(() => console.log('Mongoose connecté'))
-        .catch(err => console.error('Erreur MongoDB :', err));
-
-        // sample issu du site mongodb
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
-        db = client.db("myContacts");
-        return db;
-     
-    } catch (e) {
-        console.error(e);
+    if (!mongoose.connection.readyState) {
+        try {
+            console.log("Connexion à MongoDB...");
+            await mongoose.connect(process.env.MONGO_URI);
+            console.log("Mongoose connecté");
+        } catch (err) {
+            console.error("Erreur MongoDB :", err);
+            throw err;
+        }
     }
-
-    // finally {
-    //     await client.close();
-    // }
 }
 
 module.exports = { startMongo };

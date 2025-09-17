@@ -8,7 +8,7 @@ async function createContactController(req, res) {
         const { firstname, lastname, phone } = req.body;
         const userId = req.userId;
         const contact = await contactService.createContact(firstname, lastname, phone, userId);
-        res.status(201).json({ message: "Contact créé", contact: {id: contact._id, firstname: contact.email, lastname : contact.lastname, userId : contact.userId} });
+        res.status(201).json({ message: "Contact créé", contact: {id: contact._id, firstname: contact.firstName, lastname : contact.lastName, userId : contact.userId} });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
