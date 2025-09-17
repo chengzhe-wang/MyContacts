@@ -14,6 +14,14 @@ https://mycontacts-qzj8.onrender.com/api-docs/
 
 Veillez à bien lancer le lien backend en amont pour lancer le serveur, sinon le site risque de ne pas marcher.
 
+### Swagger
+
+Sélectionnez le serveur
+```
+https://mycontacts-qzj8.onrender.com - Render Server
+```
+Dans le swagger hébergé sur Render.
+
 ### Connexion
 
 Identifiants de test :
@@ -74,6 +82,8 @@ Front-end : http://localhost:3000
 ### Documentation API
 
 Swagger disponible sur : http://localhost:3001/api-docs
+
+Les deux serveurs marchent si vous êtes en local.
 
 ## Authentification
 
